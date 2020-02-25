@@ -6,7 +6,7 @@ Super simple plugin that adds routes, a page method and a panel field so you can
 
 ## Frontend:
 
-```php
+```html+php
 <!-- Like toggle/count -->
 <a href="<?= $page->url() ?>/like/toggle">❤️ <?= $page->likeCount() ?></a>
 
