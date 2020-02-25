@@ -4,7 +4,7 @@ Super simple plugin that adds routes, a page method and a panel field so you can
 
 ## Frontend:
 
-![Likes Frontend](https://user-images.githubusercontent.com/7975568/75246246-af5a5100-57cf-11ea-9021-0c1d0e33cb33.gif | width=300)
+![Likes Frontend](https://user-images.githubusercontent.com/7975568/75246246-af5a5100-57cf-11ea-9021-0c1d0e33cb33.gif?s=300)
 ```php
 <a href="<?= $page->url() ?>/like/toggle">❤️ <?= $page->likeCount() ?></a>
 
@@ -14,7 +14,7 @@ Super simple plugin that adds routes, a page method and a panel field so you can
 
 ## Backend:
 
-![Likes Field](https://user-images.githubusercontent.com/7975568/75246430-08c28000-57d0-11ea-88f3-783abe8cc0aa.png | width=500)
+![Likes Field](https://user-images.githubusercontent.com/7975568/75246430-08c28000-57d0-11ea-88f3-783abe8cc0aa.png?s=500)
 ```yml
 fields:
   likes:
