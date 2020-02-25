@@ -30,12 +30,12 @@ function like($page, $action) {
 Kirby::plugin('medienbaecker/likes', [
 	'fields' => [
 		'likes' => [
-            'computed' => [
-                'likeCount' => function () {
-                    return $this->model()->likeCount();
-                }
-            ]
-        ]
+			'computed' => [
+				'likeCount' => function () {
+					return $this->model()->likeCount();
+				}
+			]
+		]
 	],
 	'routes' => [
 		[
