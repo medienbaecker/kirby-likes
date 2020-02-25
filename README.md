@@ -1,4 +1,4 @@
-# Kirby Likes (WIP)
+# Kirby Likes 👍👎 (WIP)
 
 Super simple plugin that adds routes, a page method and a panel field so you can easily add likes/hearts/votes to your pages.
 
