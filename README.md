@@ -1,7 +1,8 @@
 # Kirby Likes
 
 Kirby Likes adds routes, handy page methods and a panel field so you can easily add likes/hearts/votes to pages.
-You can test it on https://kirbysites.com
+
+See it live on https://kirbysites.com
 
 ## Frontend
 
