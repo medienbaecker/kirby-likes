@@ -2,6 +2,7 @@
 
 function like($page, $action) {
 	$actions = ['add','remove','toggle'];
+	$result = false;
 	if(page($page) && in_array($action, $actions)) {
 		kirby()->impersonate('kirby');
 		$page = page($page);
@@ -9,22 +10,29 @@ function like($page, $action) {
 		if(strpos($page->likes(), $visitor) !== false) {
 			if($action == 'remove' OR $action == 'toggle') {
 				if(strpos($page->likes(), $visitor) !== false) {
-					$page->update(['likes' => str_replace($visitor . ';', '', $page->likes()->value())]);
+					$page = $page->update(['likes' => str_replace($visitor . ';', '', $page->likes()->value())]);
+					$result = [
+						'page' => $page,
+						'hasLiked' => false,
+						'likeCount' => $page->likeCount()
+					];
 				}
 			}
 		}
 		else {
 			if($action == 'add' OR $action == 'toggle') {
 				if(strpos($page->likes(), $visitor) === false) {
-					$page->update(['likes' => $page->likes()->value() . $visitor . ';']);
+					$page = $page->update(['likes' => $page->likes()->value() . $visitor . ';']);
+					$result = [
+						'page' => $page,
+						'hasLiked' => true,
+						'likeCount' => $page->likeCount()
+					];
 				}
 			}
 		}
-		go($page);
 	}
-	else {
-		go(site()->errorPage());
-	}
+	return $result;
 }
 
 Kirby::plugin('medienbaecker/likes', [
@@ -40,14 +48,38 @@ Kirby::plugin('medienbaecker/likes', [
 	'routes' => [
 		[
 			'pattern' => '(:all)/like/(:any)',
+			'method' => 'GET|POST',
 			'action' => function($page, $action) {
-				like($page, $action);
+				$result = like($page, $action);
+				if($result) {
+					if($this->method() == 'POST') {
+						return response::json($result);
+					}
+					else {
+						go($result['page']);
+					}
+				}
+				else {
+					go(site()->errorPage());
+				}
 			}
 		],
 		[
 			'pattern' => 'like/(:any)',
+			'method' => 'GET|POST',
 			'action' => function($action) {
-				like(site()->homePage(), $action);
+				$result = like(site()->homePage(), $action);
+				if($result) {
+					if($this->method() == 'POST') {
+						return response::json($result);
+					}
+					else {
+						go($result['page']);
+					}
+				}
+				else {
+					go(site()->errorPage());
+				}
 			}
 		]
 	],
@@ -55,6 +87,10 @@ Kirby::plugin('medienbaecker/likes', [
 		'likeCount' => function() {
 			$likes = $this->likes()->split(';');
 			return count($likes);
-		}
+		},
+		'hasLiked' => function() {
+			$likes = $this->likes()->split(';');
+			return in_array(md5('v-' . kirby()->visitor()->ip()), $likes);
+		},
 	],
 ]);
