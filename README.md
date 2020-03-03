@@ -1,10 +1,12 @@
-# Kirby Likes 👍👎 (WIP)
+# Kirby Likes 👍👎
 
-Super simple plugin that adds routes, handy page methods and a panel field so you can easily add likes/hearts/votes to pages.
+Kirby Likes adds routes, handy page methods and a panel field so you can easily add likes/hearts/votes to pages.
 
 ## Frontend
 
 ![Likes Frontend](https://user-images.githubusercontent.com/7975568/75246246-af5a5100-57cf-11ea-9021-0c1d0e33cb33.gif)
+
+You can either use the `toggle` route or separate `add` and `remove` routes.
 
 ```php
 <a href="<?= $page->url() ?>/like/toggle">❤️ <?= $page->likeCount() ?></a>
