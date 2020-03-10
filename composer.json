@@ -1,0 +1,16 @@
+{
+  "name": "medienbaecker/likes",
+  "version": "1.0.0",
+  "description": "Kirby Likes adds routes, handy page methods and a panel field so you can easily add likes/hearts/votes to pages.",
+  "type": "kirby-plugin",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Thomas Günther",
+      "email": "mail@medienbaecker.com"
+    }
+  ],
+  "require": {
+    "getkirby/composer-installer": "^1.1"
+  }
+}
