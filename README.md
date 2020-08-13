@@ -11,7 +11,7 @@ See it live on https://kirbysites.com
 You can either use the `toggle` route or separate `add` and `remove` routes.
 
 ```php
-<a href="<?= $page->url() ?>/like/toggle">❤️ <?= $page->likeCount() ?></a>
+<a href="<?= $page->url() ?>/like/toggle">❤️ <span><?= $page->likeCount() ?></span></a>
 
 <a href="<?= $page->url() ?>/like/add">👍</a>
 <a href="<?= $page->url() ?>/like/remove">👎</a>
