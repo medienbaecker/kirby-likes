@@ -1,5 +1,5 @@
 {
-  "name": "medienbaecker/likes",
+  "name": "medienbaecker/kirby-likes",
   "version": "1.0.0",
   "description": "Kirby Likes adds routes, handy page methods and a panel field so you can easily add likes/hearts/votes to pages.",
   "type": "kirby-plugin",
